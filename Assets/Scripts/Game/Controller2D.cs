@@ -70,13 +70,16 @@ public class Controller2D : RaycastController {
 				}
 
 				if(hit.collider.tag == "Goal"){
-					Time.timeScale = 0f;
+					this.GetComponent<Timer>().finish();
+					this.GetComponent<Timer>().printLaps();
+					continue;
 				}
 
 				if (hit.collider.tag == "Through") {
-					if(Regex.IsMatch(hit.collider.name, @"^\d+$")){ //if name is a number
+					if(Regex.IsMatch(hit.collider.name, @"^\d+$")){ //if name is a number so it is a checkpoint
 						if (directionX == 1 || hit.distance == 0) {
 							this.GetComponent<CheckpointsController>().lastCheckPoint = int.Parse(hit.collider.name);
+							this.GetComponent<Timer>().addLap(int.Parse(hit.collider.name));
 						continue;
 						}
 						if (directionX == -1 || hit.distance == 0) {
