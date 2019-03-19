@@ -58,6 +58,8 @@ public class PlayerInput : MonoBehaviour {
 			Time.timeScale = 1f;
 			timer.ResetTimer();
 			player.ResetLevel();
+			timer.finished = false;
+			timer.hasSent = false;
 		}
 	}
 }

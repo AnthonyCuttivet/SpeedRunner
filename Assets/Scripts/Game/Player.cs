@@ -94,8 +94,11 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ResetLevel(){
+		velocity.y = -velocity.y;
 		//reset player position
 		this.transform.position = spawnPosition;
+		Debug.Log(velocity);
+		velocity = Vector3.zero;
 		//reset player jumps
 		remainingJumps = maxJumps;
 		//reset player checkpoint count

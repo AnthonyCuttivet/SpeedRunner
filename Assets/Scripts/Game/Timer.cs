@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour {
 	public bool finished = false;
 
 	public bool hasPrinted = false;
-	private bool hasSent = false;
+	public bool hasSent = false;
 
 	private List<float> laps = new List<float>();
 
@@ -56,12 +56,12 @@ public class Timer : MonoBehaviour {
 			sendScore();
 			hasSent = true;
 		}
-		timertext.text = "Timer : " + time.ToString("F2") + "s" + 
+		timertext.text = "Timer : " + time.ToString("F3") + "s" + 
 						"\nR : Restart";/*\nKeys : Move\nLeftShift : Sprint\nSpace : Jump\nWallSlide : Automatic\nWalljump : jump while on wallSlide\nInner WallJump : WallSlide jump while key facing wall";*/
 	}
 
 	void sendScore(){
-        string url = "https://anthonycuttivet.com/GOTY2019MIM/leaderboard.php";
+        string url = "https://anthonycuttivet.com/GOTY2019MIM/leaderboard/leaderboardController.php";
         WWWForm form = new WWWForm();
         form.AddField("t1", laps[0].ToString());
 		form.AddField("t2", laps[1].ToString());
